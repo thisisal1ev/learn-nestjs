@@ -1,7 +1,8 @@
-import { Controller, Get, ParseIntPipe, Query, UseGuards, UseInterceptors } from '@nestjs/common'
+import { Body, Controller, Get, Post, UseGuards, UseInterceptors, UsePipes, ValidationPipe } from '@nestjs/common'
 
 import { AuthGuard } from 'src/conecption/authGuard'
 import { LoggingInterceptor } from 'src/conecption/interceptor'
+import { CreateFlowersDto } from './dto/flowers.dto'
 import { FlowersService } from './flowers.service'
 
 @Controller('flowers')
@@ -11,8 +12,14 @@ export class FlowersController {
 
   @Get()
   @UseGuards(AuthGuard)
-  getAll(@Query('pageNumber', ParseIntPipe) pageNumber: number) {
-    console.log(pageNumber)
+  getAll() {
     return this.flowersService.getAll()
+  }
+
+  @Post()
+  @UsePipes(new ValidationPipe())
+  @UseGuards(AuthGuard)
+  create(@Body() dto: CreateFlowersDto) {
+    return this.flowersService.create(dto)
   }
 }
