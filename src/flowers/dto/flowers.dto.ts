@@ -1,6 +1,7 @@
 import { IsString, IsNumber } from 'class-validator'
 
 export class CreateFlowersDto {
+	id: number
 
 	@IsString()
 	name: string
