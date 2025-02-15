@@ -10,7 +10,8 @@ import { AppService } from './app.service'
 import { LoggerMiddleware } from './conecption/middleware'
 import { FlowersModule } from './flowers/flowers.module'
 import { MicroservicesModule } from './microservices/microservices.module'
-import { FlowersGraphqlModule } from './flowers-graphql/flowers-graphql.module';
+import { FlowersGraphqlModule } from './flowers-graphql/flowers-graphql.module'
+import { WebsocketGateway } from './websocket.gateway'
 
 @Module({
   imports: [ConfigModule.forRoot({
@@ -31,9 +32,9 @@ import { FlowersGraphqlModule } from './flowers-graphql/flowers-graphql.module';
     autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     sortSchema: true
   }),
-  FlowersGraphqlModule],
+    FlowersGraphqlModule],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, WebsocketGateway],
 })
 
 export class AppModule implements NestModule {
