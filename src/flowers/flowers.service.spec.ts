@@ -56,7 +56,6 @@ describe('Flowers service', () => {
 	it('should create a new flower', async () => {
 		expect(await service.create(
 			{
-				id: 2,
 				name: 'Lilly',
 				color: 'White',
 				price: 7

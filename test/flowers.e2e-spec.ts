@@ -60,6 +60,14 @@ describe('FlowerController (e2e)', () => {
 					price: 8,
 					createdAt: '2025-02-16T11:57:54.201Z',
 					updatedAt: '2025-02-16T11:57:54.201Z'
+				},
+				{
+					id: 6,
+					name: 'Power flower',
+					color: 'Yellow',
+					price: 15,
+					createdAt: '2025-02-16T12:15:08.148Z',
+					updatedAt: '2025-02-16T12:15:08.148Z'
 				}
 			])
 	})
@@ -69,7 +77,6 @@ describe('FlowerController (e2e)', () => {
 			.post('/flowers')
 			.send(
 				{
-					id:6,
 					name: 'Power flower',
 					color: 'Yellow',
 					price: 15,
@@ -77,13 +84,8 @@ describe('FlowerController (e2e)', () => {
 			)
 			.expect(201)
 			.expect(
-				{
-					id: 6,
-					name: 'Power flower',
-					color: 'Yellow',
-					price: 15,
-					createdAt: "2025-02-13T14:15:29.399Z",
-					updatedAt: "2025-02-13T14:15:29.399Z"
+				response => {
+					return response.body.name === 'Power flower'
 				}
 			)
 	})

@@ -49,7 +49,6 @@ describe('FlowersController', () => {
 	it('should create a new flower', async () => {
 		expect(await controller.create(
 			{
-				id: 2,
 				name: 'Lilly',
 				color: 'White',
 				price: 7
