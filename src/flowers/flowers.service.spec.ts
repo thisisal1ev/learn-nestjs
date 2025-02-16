@@ -1,5 +1,7 @@
 import { ConfigService } from '@nestjs/config'
 import { Test } from '@nestjs/testing'
+
+import { PrismaService } from '../prisma.service'
 import { FlowersService } from './flowers.service'
 
 describe('Flowers service', () => {
@@ -10,7 +12,7 @@ describe('Flowers service', () => {
 			providers: [
 				FlowersService,
 				{
-					provide: 'PrismaService',
+					provide: PrismaService,
 					useValue: {
 						flower: {
 							findMany: jest.fn().mockReturnValue([
@@ -59,13 +61,13 @@ describe('Flowers service', () => {
 				color: 'White',
 				price: 7
 			}
-		)).toEqual([
+		)).toEqual(
 			{
 				id: 2,
 				name: 'Lilly',
 				color: 'White',
 				price: 7
 			}
-		])
+		)
 	})
 })

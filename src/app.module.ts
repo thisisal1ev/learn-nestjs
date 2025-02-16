@@ -7,10 +7,10 @@ import { join } from 'path'
 
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
-import { LoggerMiddleware } from './conecption/middleware'
+import { LoggerMiddleware } from './conception/middleware'
+import { FlowersGraphqlModule } from './flowers-graphql/flowers-graphql.module'
 import { FlowersModule } from './flowers/flowers.module'
 import { MicroservicesModule } from './microservices/microservices.module'
-import { FlowersGraphqlModule } from './flowers-graphql/flowers-graphql.module'
 import { WebsocketGateway } from './websocket.gateway'
 
 @Module({

@@ -1,5 +1,7 @@
 import { Test } from '@nestjs/testing'
+
 import { FlowersController } from './flowers.controller'
+import { FlowersService } from './flowers.service'
 
 describe('FlowersController', () => {
 	let controller: FlowersController
@@ -9,7 +11,7 @@ describe('FlowersController', () => {
 			controllers: [FlowersController],
 			providers: [
 				{
-					provide: 'FlowersService',
+					provide: FlowersService,
 					useValue: {
 						getAll: jest.fn().mockReturnValue([
 							{
@@ -52,13 +54,13 @@ describe('FlowersController', () => {
 				color: 'White',
 				price: 7
 			}
-		)).toEqual([
+		)).toEqual(
 			{
 				id: 2,
 				name: 'Lilly',
 				color: 'White',
 				price: 7
 			}
-		])
+		)
 	})
 })
